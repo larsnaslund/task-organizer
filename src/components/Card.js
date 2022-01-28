@@ -2,21 +2,20 @@ import { useState } from "react";
 
 export default function Card({ text }) {
 
-    // TODO better name
-    const [onDragClass, setOnDragClass] = useState('');
+    const [responsiveClass, setResponsiveClass] = useState('');
 
-    const onDragEvent = () => {
+    const onDragStartEvent = () => {
         console.log('start');
-        setOnDragClass('kanban-item-drag');
+        setResponsiveClass('dragging');
     }
 
-    const onDragEnd = () => {
+    const onDragEndEvent = () => {
         console.log('end');
-        setOnDragClass('');
+        setResponsiveClass('');
     }
 
     return (
-        <div draggable onDragStart={onDragEvent} onDragEnd={onDragEnd} className={'card ' + onDragClass}>
+        <div draggable onDragStart={onDragStartEvent} onDragEnd={onDragEndEvent} className={'kanban-card ' + responsiveClass}>
             {text}
         </div>
     );

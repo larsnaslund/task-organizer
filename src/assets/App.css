@@ -30,7 +30,7 @@ body {
   grid-gap: 16px;
 }
 
-.card {
+.kanban-card {
   padding: 16px;
   background-color: #fff;
   border-radius: 8px;
@@ -38,6 +38,6 @@ body {
 }
 
 /* When an item is being dragged */
-.kanban-item-drag {
+.kanban-card.dragging {
   background-color: red;
 }
