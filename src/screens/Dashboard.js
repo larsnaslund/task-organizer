@@ -4,17 +4,16 @@ import { useKanbanData } from '../KanbanContext';
 
 export default function Dashboard() {
 
-    const { items } = useKanbanData();
+    const { getTasksBelongingTo, processes } = useKanbanData();
 
     useEffect(() => {
         document.title = "KanBan thingy - Dashboard";
     }, []);
 
-
     return <>
         <div id='kanban-board'>
-            {items.map((column, index) =>
-                <Column key={'c' + index} title={column.title} items={column.items} />
+            {processes.map((process, index) =>
+                <Column key={'c' + index} title={process.title} items={getTasksBelongingTo(process.id)} />
             )}
         </div>
 

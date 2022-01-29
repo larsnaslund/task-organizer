@@ -7,39 +7,119 @@ export function useKanbanData() {
 }
 
 export const KanbanProvider = (props) => {
-
     /*
-    const priorityLevels = ['expedite', 'normal priority', 'not critical', 'low priority'];
-    const task = {
-        'id': 1,
-        'title': 'Make coffee',
-        'description': 'descriptive text',
-        'priority': ''
-    }*/
+        Visual illustration of kanban of terminology, a picture says a 1000 words.
 
+        Process Todo    Process Doing       Process Done
+        task            task                task 
+        task            task                task 
+    */
+    const [processes, setProcesses] = useState([]);
+    const [tasks, setTasks] = useState([]);
 
-    const [items, setItems] = useState([]);
+    //TODO redo. Not very flexible at the moment
+    const priorities = [
+        'normal priority',
+        'expedite',
+        'not critical',
+        'low priority'
+    ];
 
+    const defaultPriority = priorities[0];
+
+    /* Props and functions accessible from the hook */
     const value = {
-        items
+        tasks,
+        processes,
+        getTasksBelongingTo
     };
 
+
+    /**
+     * 
+     * @param {*} id
+     * @param {*} title 
+     * @param {*} description 
+     * @param {*} priority 
+     * @param {*} processId current process task belongs to
+     * @returns
+     */
+    function newTask(id, title, description, priority, processId) {
+        return {
+            'id': id,
+            'title': title,
+            'description': description,
+            'priority': !priority ? defaultPriority : priority,
+            'process': !processId ? null : processId
+        }
+    }
+
+
+    /**
+     * Create a new id
+     * TODO change once basic functionality is done as this id depends on the task count and is not properly unique
+     */
+    const getNewId = () => tasks.length + 1;
+
+    /**
+     * 
+     * @param {*} processId 
+     * @returns 
+     */
+    function getTasksBelongingTo(processId) {
+        return tasks.filter(task => task.process == processId);
+    }
+
+
     useEffect(() => {
-        // Set up dummy data
-        const list = [
-            { 'title': 'To Do', items: ['Card 1', 'Card 2', 'Card 3'] },
-            { 'title': 'In Progress', items: ['Card 1', 'Card 2', 'Card 3'] },
-            { 'title': 'Testing', items: ['Card 1', 'Card 2', 'Card 3'] },
-            { 'title': 'Done', items: ['Card 1', 'Card 2', 'Card 3'] }
+
+        // TODO properly fetch tasks
+
+        const dummyTaskCount = 12;
+
+        // Generate dummy processes
+        let dummyProcesses = [
+            { 'id': 1, 'title': 'To Do' },
+            { 'id': 2, 'title': 'In Progress' },
+            { 'id': 3, 'title': 'Testing' },
+            { 'id': 4, 'title': 'Done' }
         ];
-        setItems([...list]);
+
+        let i = 0;
+        let dummyTaskPerProcess = dummyTaskCount / dummyProcesses.length;
+        let process = 1;
+
+        // Generate dummy tasks
+        let dummyTasks = new Array(dummyTaskCount).fill().map((element, index) => {
+
+            if (i >= dummyTaskPerProcess) {
+                process++;
+                i = 0;
+            }
+            i++;
+
+            // Generate random priority
+            let r = Math.floor(Math.random() * priorities.length);
+            let randomPriority = priorities[r];
+
+            return newTask(
+                index + 1, // id
+                `Task ${index + 1}`, // title
+                `This is a dummy task`,  // description
+                randomPriority, // let it assign a default
+                process  // process 
+            )
+        });
+
+        setProcesses(dummyProcesses);
+        setTasks(dummyTasks);
 
     }, []);
 
     // On item change
     useEffect(() => {
-        // TODO catch and do stufff
-    }, [items]);
+        // TODO catch and do stuff
+    }, [tasks]);
 
     return (
         <KanbanContext.Provider value={value}>
