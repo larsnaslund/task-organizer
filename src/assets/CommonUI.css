@@ -1,0 +1,32 @@
+button.button {
+  background-color: #4caf50;
+  border: none;
+  color: #fff;
+  padding: 14px 28px;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  border-radius: 4px;
+}
+
+button.button:active {
+  transform: translateY(1px);
+}
+
+input[type="text"] {
+  padding: 14px 16px;
+  transition: width 0.3s ease-in-out;
+  outline: none;
+  border: 0;
+  border-radius: 4px;
+  width: 120px;
+}
+
+input[type="text"]:active {
+  width: 100%;
+}
+input[type="text"]:focus {
+  outline: none;
+  border: 0;
+  width: 600px;
+}

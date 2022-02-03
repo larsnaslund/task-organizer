@@ -1,5 +1,6 @@
 import './assets/App.css';
 import './assets/Responsive.css';
+import './assets/CommonUI.css';
 import { KanbanProvider } from './KanbanContext';
 import Dashboard from './screens/Dashboard';
 

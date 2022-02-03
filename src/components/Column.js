@@ -1,13 +1,21 @@
 import Card from "./Card"
 
-export default function Column({ items, title }) {
+export default function Column({ process }) {
 
-    return <div className="kanban-column">
-        <div className="header">{title}</div>
+    // TODO use hook instead of propdrilling onto this component?
 
-        {items.map((item, index) =>
-            /* TODO fix key. Temp solution */
-            <Card key={(title + item + index).replace(/ /g, '')} title={item.title} text={item.description} priority={item.priority} />
-        )}
+    // TODO handle card being dragged over the column
+
+    return <div className="kanban-column"
+        onDragEnter={(e) => null}
+        onDragLeave={(e) => null}
+        onDragOver={(e) => null}
+    >
+        <div className="header">{process.title}</div>
+        <div className="items">
+            {process.items.map((item, index) =>
+                <Card key={index} task={item} />
+            )}
+        </div>
     </div>
 }

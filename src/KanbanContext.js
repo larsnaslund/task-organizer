@@ -1,7 +1,9 @@
-import React, { useState, useEffect, createContext, useContext } from 'react';
+/**
+ * 
+ */
+import React, { useState, useEffect, createContext, useContext, useRef } from 'react';
 
 const KanbanContext = createContext();
-
 export function useKanbanData() {
     return useContext(KanbanContext);
 }
@@ -17,6 +19,17 @@ export const KanbanProvider = (props) => {
     const [processes, setProcesses] = useState([]);
     const [tasks, setTasks] = useState([]);
 
+    // Tracking whether something is being dragged
+    const [taskDraggingActive, setTaskDraggingActive] = useState(false);
+
+    //
+    const currentTaskDragged = useRef(null);
+    const currentTaskDraggedDOM = useRef(null);
+
+    // 
+    const currentTaskProcessTarget = useRef(null);
+    const currentTaskProcessTargetDOM = useRef(null);
+
     //TODO redo. Not very flexible at the moment
     const priorities = [
         'normal priority',
@@ -30,8 +43,15 @@ export const KanbanProvider = (props) => {
     /* Props and functions accessible from the hook */
     const value = {
         tasks,
+        setTasks,
         processes,
-        getTasksBelongingTo
+        getTasksBelongingTo,
+        taskDraggingActive,
+        setTaskDraggingActive,
+        currentTaskDragged,
+        currentTaskDraggedDOM,
+        currentTaskProcessTarget,
+        currentTaskProcessTargetDOM
     };
 
 
@@ -57,12 +77,34 @@ export const KanbanProvider = (props) => {
 
     /**
      * Create a new id
-     * TODO change once basic functionality is done as this id depends on the task count and is not properly unique
+     * TODO change once basic functionality is done as this id depends on the task count and is not properly unique and would introduce problems with persistence
      */
     const getNewId = () => tasks.length + 1;
 
     /**
-     * 
+     * TODO should be changed once the rest is better structured. Better to just save in a format like so:
+    [
+        {
+            process: 'todo',
+            order: 1, // order in the displayed list
+            items: // list of tasks belonging to this process
+                [
+                    {
+                        id: 1,
+                        title: 'task title',
+                        description: 'describing the task',
+                        priority: 'expedite'
+                    },
+                    {
+                        id: 2,
+                        title: 'another task title',
+                        description: 'describing another task',
+                        priority: 'normal priority'
+                    }
+                ]
+        }
+    ]
+     * ]
      * @param {*} processId 
      * @returns 
      */
@@ -82,7 +124,8 @@ export const KanbanProvider = (props) => {
             { 'id': 1, 'title': 'To Do' },
             { 'id': 2, 'title': 'In Progress' },
             { 'id': 3, 'title': 'Testing' },
-            { 'id': 4, 'title': 'Done' }
+            { 'id': 4, 'title': 'Done' },
+            { 'id': 5, 'title': 'Another one' }
         ];
 
         let i = 0;
@@ -121,7 +164,9 @@ export const KanbanProvider = (props) => {
         // TODO catch and do stuff
     }, [tasks]);
 
+
     return (
+
         <KanbanContext.Provider value={value}>
             {props.children}
         </KanbanContext.Provider>
