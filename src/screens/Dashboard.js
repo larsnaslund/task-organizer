@@ -17,7 +17,7 @@ export default function Dashboard() {
             <Header />
             <div id="row">
                 <Sidemenu />
-                <div class="content-wrapper">
+                <div className="content-wrapper">
                     <div id='kanban-board'>
                         {processes.map((process, index) =>
                             <Column

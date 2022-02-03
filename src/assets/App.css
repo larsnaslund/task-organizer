@@ -123,10 +123,18 @@ body {
   pointer-events: none;
 }
 
-.drop-area {
+.drop-area-tool {
   border: 1px dashed #fff;
   display: flex;
-  padding: 64px;
+  padding: 64px 0;
   align-items: center;
   justify-content: center;
+  margin-bottom: 6px;
+}
+
+.drop-area-tool.delete-drop.active {
+  background-color: #ff7171;
+  color: #fff;
+  border-color: #ff7171;
+  transition: background-color 250ms linear;
 }

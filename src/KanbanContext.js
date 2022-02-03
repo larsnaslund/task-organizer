@@ -86,21 +86,32 @@ export const KanbanProvider = (props) => {
     [
         {
             process: 'todo',
-            order: 1, // order in the displayed list
             items: // list of tasks belonging to this process
-                [
-                    {
-                        id: 1,
-                        title: 'task title',
-                        description: 'describing the task',
-                        priority: 'expedite'
-                    },
-                    {
-                        id: 2,
-                        title: 'another task title',
-                        description: 'describing another task',
-                        priority: 'normal priority'
-                    }
+                {
+                    active:
+                    [
+                        {
+                            id: 1,
+                            title: 'task title',
+                            description: 'describing the task',
+                            priority: 'expedite'
+                        },
+                        {
+                            id: 2,
+                            title: 'another task title',
+                            description: 'describing another task',
+                            priority: 'normal priority'
+                        }
+                    ],
+                    archived:
+                    [
+                        {
+                            id: 3,
+                            title: 'an easy task',
+                            description: 'quickly complete it so we can archive it',
+                            priority: 'expedite'
+                        }
+                    ]
                 ]
         }
     ]
