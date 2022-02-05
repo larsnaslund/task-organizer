@@ -81,41 +81,8 @@ export const KanbanProvider = (props) => {
      */
     const getNewId = () => tasks.length + 1;
 
-    /**
-     * TODO should be changed once the rest is better structured. Better to just save in a format like so:
-    [
-        {
-            process: 'todo',
-            items: // list of tasks belonging to this process
-                {
-                    active:
-                    [
-                        {
-                            id: 1,
-                            title: 'task title',
-                            description: 'describing the task',
-                            priority: 'expedite'
-                        },
-                        {
-                            id: 2,
-                            title: 'another task title',
-                            description: 'describing another task',
-                            priority: 'normal priority'
-                        }
-                    ],
-                    archived:
-                    [
-                        {
-                            id: 3,
-                            title: 'an easy task',
-                            description: 'quickly complete it so we can archive it',
-                            priority: 'expedite'
-                        }
-                    ]
-                ]
-        }
-    ]
-     * ]
+    /*
+     * 
      * @param {*} processId 
      * @returns 
      */
