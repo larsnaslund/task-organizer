@@ -11,10 +11,11 @@ export default function Column({ process }) {
         onDragLeave={(e) => null}
         onDragOver={(e) => null}
     >
-        <div className="header">{process.title}</div>
+        <div className="header">{process.processName}</div>
         <div className="items">
-            {process.items.map((item, index) =>
-                <Card key={index} task={item} />
+            {/* active = tasks that are active. Another key exists: archived */}
+            {process.items.active.map((item, index) =>
+                <Card key={index} task={{ ...item, index: index, processIndex: process.index }} />
             )}
         </div>
     </div>

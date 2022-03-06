@@ -1,28 +1,29 @@
 import React, { useEffect } from 'react';
 import Column from '../components/Column';
-import Header from '../components/Header';
 import Sidemenu from '../components/Sidemenu';
-import { useKanbanData } from '../KanbanContext';
+import { useTaskManager } from '../TaskContext';
+import ControlledInput from '../components/ControlledInput';
 
 export default function Dashboard() {
 
-    const { getTasksBelongingTo, processes } = useKanbanData();
+    const { tasks } = useTaskManager();
 
     useEffect(() => {
-        document.title = "KanBan thingy - Dashboard";
+        document.title = "Dashboard";
     }, []);
 
     return <>
         <div id="main-wrapper">
-            <Header />
+
             <div id="row">
                 <Sidemenu />
                 <div className="content-wrapper">
+                    <ControlledInput />
                     <div id='kanban-board'>
-                        {processes.map((process, index) =>
+                        {tasks.map((process, index) =>
                             <Column
                                 key={'c' + index}
-                                process={{ ...process, 'items': getTasksBelongingTo(process.id) }}
+                                process={{ ...process, index: index }}
                             />
                         )}
                     </div>
@@ -30,11 +31,8 @@ export default function Dashboard() {
                     <div id="kanban-to-sort">
 
                     </div>
-
                 </div>
-
             </div>
         </div>
-
     </>;
 }

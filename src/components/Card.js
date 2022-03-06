@@ -1,12 +1,19 @@
-import { useKanbanData } from "../KanbanContext";
+import { useTaskManager } from "../TaskContext";
 
 export default function Card({ task }) {
+
     const {
         taskDraggingActive,
         setTaskDraggingActive,
         currentTaskDragged,
         tasks,
-        setTasks } = useKanbanData();
+        setTasks,
+
+        // New stuff
+        currentTaskDraggedProcessIndex,
+        currentTaskDraggedTaskIndex
+
+    } = useTaskManager();
 
 
     /**
@@ -15,10 +22,18 @@ export default function Card({ task }) {
      * @param {*} task 
      */
     const onDragStartEvent = (e, task) => {
+        //currentTaskDraggedProcessIndex,
         setTaskDraggingActive(true);
-        currentTaskDragged.current = task.id
-    }
 
+        // Remove?=
+        currentTaskDragged.current = task.id
+        //
+
+        currentTaskDraggedTaskIndex.current = task.index;
+        currentTaskDraggedProcessIndex.current = task.processIndex;
+
+        console.log("started drag of: taskIndex: " + task.index + " processIndex: " + task.processIndex);
+    }
 
     /**
      * Drag ended
@@ -74,7 +89,12 @@ export default function Card({ task }) {
             <div className={'kanban-card '} >
                 <div className={'wrapper ' + getPriorityStyling(task.priority)}>
                     <div className="header">{task.title}</div>
-                    <div className="body">{task.description}</div>
+                    <div className="body">{task.description}
+                        <br />
+                        <strong>Index: </strong>{task.index}
+                        <br />
+                        <strong>Process Index: </strong>{task.processIndex}
+                    </div>
                 </div>
             </div>
         </div>

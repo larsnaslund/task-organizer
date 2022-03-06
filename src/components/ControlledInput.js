@@ -1,22 +1,16 @@
-import React from 'react';
-import { useState } from 'react/cjs/react.development';
-import Button from './common ui/Button';
+import React, { useState } from 'react';
 import Input from './common ui/Input';
 
-export default function Header() {
 
+export default function ControlledInput() {
 
     const [hintText, setHintText] = useState('');
 
-    const onFocus = (e) => {
-        handleChange(e);
-    }
-
-    const onBlur = () => {
-        setHintText();
-    }
+    const onFocus = (e) => handleChange(e);
+    const onBlur = () => setHintText();
 
     const handleChange = (e) => {
+
         let value = e.target.value;
 
         let arg = value.split(";").length;
@@ -50,6 +44,7 @@ export default function Header() {
     }
 
 
+    // TODO remove the semicolon. Currently just used for visualization
     const handleKeyPress = (e) => {
         if (e.key === 'Tab') {
             e.preventDefault();
@@ -59,24 +54,32 @@ export default function Header() {
     }
 
 
-    return <div id="header" className="content-wrapper">
+    return <>
 
-        <div style={{ position: 'relative' }}>
-            <Input
-                placeholder='Quick add task'
-                onChange={(e) => handleChange(e)}
-                onFocus={(e) => onFocus(e)}
-                onBlur={onBlur}
-                onKeyDown={(e) => handleKeyPress(e)}
-            />
-            {hintText &&
-                <div id="tooltip" style={{ background: '#FFF', color: '#000', position: 'absolute', top: 44, padding: 10, left: 16, width: 'inherit' }}>
+        {/* TODO own component */}
+        <div className={'smart-input ' + (hintText ? 'focus' : '')}>
+            <div className='input'>
+                <Input
+                    placeholder='Quick add task'
+                    onChange={(e) => handleChange(e)}
+                    onFocus={(e) => onFocus(e)}
+                    onBlur={onBlur}
+                    onKeyDown={(e) => handleKeyPress(e)}
+                />
+                {hintText && <div className='suggestion-field'>
                     {hintText}
+                </div>}
+            </div>
+
+            {/*hintText &&
+                <div className='preview' style={{ background: '#000' }}>
+                    ff
                 </div>
-            }
+            */}
+
         </div>
 
+    </>
 
-        {/*<Button onClick={() => console.log('click')}>Add process</Button>*/}
-    </div>;
+    {/*<Button onClick={() => console.log('click')}>Add process</Button>*/ }
 }

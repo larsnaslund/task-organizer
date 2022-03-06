@@ -12,21 +12,3 @@ button.button {
 button.button:active {
   transform: translateY(1px);
 }
-
-input[type="text"] {
-  padding: 14px 16px;
-  transition: width 0.3s ease-in-out;
-  outline: none;
-  border: 0;
-  border-radius: 4px;
-  width: 120px;
-}
-
-input[type="text"]:active {
-  width: 100%;
-}
-input[type="text"]:focus {
-  outline: none;
-  border: 0;
-  width: 600px;
-}

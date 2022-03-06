@@ -1,15 +1,15 @@
 import './assets/App.css';
 import './assets/Responsive.css';
 import './assets/CommonUI.css';
-import { KanbanProvider } from './KanbanContext';
+import { TaskProvider } from './TaskContext';
 import Dashboard from './screens/Dashboard';
 
 function App() {
 
-    return <KanbanProvider>
+    return <TaskProvider>
         {/* TODO router if more pages */}
         <Dashboard />
-    </KanbanProvider>;
+    </TaskProvider>;
 }
 
 export default App;
