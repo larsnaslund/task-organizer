@@ -3,6 +3,8 @@ import Column from '../components/Column';
 import Sidemenu from '../components/Sidemenu';
 import { useTaskManager } from '../TaskContext';
 import ControlledInput from '../components/ControlledInput';
+import Card from '../components/Card';
+import CardPreview from '../components/CardPreview';
 
 export default function Dashboard() {
 
@@ -17,8 +19,14 @@ export default function Dashboard() {
 
             <div id="row">
                 <Sidemenu />
+
                 <div className="content-wrapper">
-                    <ControlledInput />
+
+                    <ControlledInput
+                        possibleArguments={['title', 'description', 'category', 'priority']}
+                        PreviewComponent={(props) => <CardPreview {...props} />}
+                    />
+
                     <div id='kanban-board'>
                         {tasks.map((process, index) =>
                             <Column

@@ -121,6 +121,7 @@ body {
 }
 .kanban-card .body {
   font-size: 14px;
+  color: #5b5c60;
 }
 .kanban-card .wrapper {
   padding: 6px 12px;
@@ -194,7 +195,7 @@ body {
 .smart-input.focus .input {
   border-color: #393f4f;
 }
-.smart-input .preview {
+.smart-input .suggestion-field .preview {
   /* 
     TODO Preview whatever is being created. Takes an arrow function in the implementation
   */
