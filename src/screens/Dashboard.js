@@ -6,7 +6,7 @@ import CardPreview from '../components/CardPreview';
 import { db } from '../db';
 import { useLiveQuery } from "dexie-react-hooks";
 import Modal from '../components/Modal';
-import Button from '../components/common ui/Button';
+import TaskView from '../components/TaskView';
 
 export default function Dashboard() {
 
@@ -31,26 +31,13 @@ export default function Dashboard() {
             (task) =>
                 setModal(
                     <Modal
+                        outsideClickCloses={true}
                         title={'Viewing task'}
                         closeCallback={(e) => setModal(null)}
                     >
-                        <ul className='modal-keyvalues'>
-                            {Object.keys(task).map(key =>
-                                <li key={key}><strong>{key}</strong> <span>{task[key]}</span></li>
-                            )}
-                            <li>todo more...</li>
-                        </ul>
+                        <TaskView task={task} />
 
-                        <div className='button-group'>
-                            <Button className='button bgGreen textWhite'>Green</Button>
-                            <Button className='button bgRed textWhite'>Red</Button>
-                            <Button className='button bgBlue textWhite'>Blue</Button>
-                            <Button className='button bgOrange textWhite'>Orange</Button>
-                            <Button className='button bgGreen textWhite'>Green</Button>
-                            <Button className='button bgRed textWhite'>Red</Button>
-                            <Button className='button bgBlue textWhite'>Blue</Button>
-                            <Button className='button bgOrange textWhite'>Orange</Button>
-                        </div>
+
                     </Modal>
                 )
         );
