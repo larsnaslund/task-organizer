@@ -1,14 +1,45 @@
 button.button {
-  background-color: #4caf50;
   border: none;
-  color: #fff;
   padding: 14px 28px;
   text-decoration: none;
   display: inline-block;
   font-size: 14px;
   border-radius: 4px;
 }
-
 button.button:active {
   transform: translateY(1px);
+}
+
+.button-group {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.textWhite {
+  color: #fff;
+}
+
+.textDark {
+  color: #393f4f;
+}
+
+.bgRed {
+  background-color: #f25d5d;
+}
+
+.bgBlue {
+  background-color: #0880ae;
+}
+
+.bgOrange {
+  background-color: #f38637;
+}
+
+.bgBlack {
+  background-color: #000;
+}
+
+.bgGreen {
+  background-color: #4d9c50;
 }
