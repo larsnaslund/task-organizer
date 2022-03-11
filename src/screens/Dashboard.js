@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Column from '../components/Column';
 import Sidemenu from '../components/Sidemenu';
-import { useTaskManager } from '../TaskContext';
 import ControlledInput from '../components/ControlledInput';
 import CardPreview from '../components/CardPreview';
 import { db } from '../db';
@@ -10,8 +9,6 @@ import Modal from '../components/Modal';
 import Button from '../components/common ui/Button';
 
 export default function Dashboard() {
-
-    const { getTask } = useTaskManager();
 
 
     const [modal, setModal] = useState();
@@ -30,7 +27,7 @@ export default function Dashboard() {
 
     const openTask = (taskId) => {
 
-        getTask(taskId).then(
+        db.tasks.where('id').equals(taskId).first().then(
             (task) =>
                 setModal(
                     <Modal
