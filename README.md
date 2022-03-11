@@ -1,6 +1,8 @@
 # Libraries used
 - [Dexie.js](https://github.com/dexie/Dexie.js)
 - [Mock Service Worker (msw)](https://github.com/mswjs/msw)
+- [React Icons](https://react-icons.github.io/)
+
 
 # Getting Started with Create React App
 
