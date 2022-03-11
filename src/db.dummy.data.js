@@ -19,6 +19,54 @@ export const insertDummyData = (dexieDb) => {
             categoryId: 2,
             label: 'label test',
             status: 0
+        },
+        {
+            title: 'Filler task 1',
+            description: 'Filler Lorem Ipsum',
+            priority: 'high',
+            categoryId: 4,
+            label: 'label test',
+            status: 0
+        },
+        {
+            title: 'Filler task 2',
+            description: 'Filler Lorem Ipsum',
+            priority: 'high',
+            categoryId: 4,
+            label: 'label test',
+            status: 0
+        },
+        {
+            title: 'Filler task 3',
+            description: 'Filler Lorem Ipsum',
+            priority: 'high',
+            categoryId: 4,
+            label: 'label test',
+            status: 0
+        },
+        {
+            title: 'Filler task 4',
+            description: 'Filler Lorem Ipsum',
+            priority: 'high',
+            categoryId: 4,
+            label: 'label test',
+            status: 0
+        },
+        {
+            title: 'Filler task 5',
+            description: 'Filler Lorem Ipsum',
+            priority: 'high',
+            categoryId: 4,
+            label: 'label test',
+            status: 0
+        },
+        {
+            title: 'Filler task 6',
+            description: 'Filler Lorem Ipsum',
+            priority: 'high',
+            categoryId: 1,
+            label: 'label test',
+            status: 0
         }
     ]
 

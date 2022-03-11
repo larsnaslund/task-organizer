@@ -1,5 +1,7 @@
 import React, { useState, useEffect, createContext, useContext, useRef } from 'react';
 import { db } from './db';
+import { useLiveQuery } from "dexie-react-hooks";
+import { liveQuery } from 'dexie';
 
 const TaskContext = createContext();
 
@@ -45,9 +47,18 @@ export const TaskProvider = (props) => {
 
     /* Props and functions accessible from the hook */
     const value = {
+        getTask,
+
+
+
+
+
+
         tasks,
         setTasks,
         categories,
+
+
         getTasksBelongingTo,
         taskDraggingActive,
         setTaskDraggingActive,
@@ -62,6 +73,13 @@ export const TaskProvider = (props) => {
     };
 
 
+    /** NEW */
+    function getTask(id) {
+        return db.tasks.where('id').equals(id).first();
+    }
+
+
+    /** END NEW */
 
     /**
      * 
@@ -87,9 +105,6 @@ export const TaskProvider = (props) => {
 
     // On mount
     useEffect(() => {
-
-        // get tasks
-
     }, []);
 
 
