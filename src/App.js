@@ -1,6 +1,6 @@
+import './assets/CommonUI.css';
 import './assets/App.css';
 import './assets/Responsive.css';
-import './assets/CommonUI.css';
 import { TaskProvider } from './TaskContext';
 import Dashboard from './screens/Dashboard';
 

@@ -1,13 +1,17 @@
 import React, { useState, useRef } from 'react';
 import Input from './common ui/Input';
 
-
+/**
+ * TODO refactor properly once further along in overall project
+ * TODO flex-wrap chips?
+ */
 export default function ControlledInput({ possibleArguments, PreviewComponent }) {
 
     const [hintText, setHintText] = useState('');
+    // Input status
     const [inputActive, setInputActive] = useState(false);
+    // Current input value
     const [inputValue, setInputValue] = useState('');
-
     // Stack keeping track of the entered arguments
     const activeArguments = useRef([]);
 
