@@ -15,7 +15,7 @@ export default function TaskCard({ task }) {
     }
 
     const getPriorityStyling = (priority) => {
-        return !priority ? '' : 'priority-' + priority.split(' ').join('-');
+        return !priority ? '' : 'priority-' + priority;
     }
 
 
@@ -26,7 +26,7 @@ export default function TaskCard({ task }) {
             onDragEnter={(e) => onDragEnterEvent(e, task)}
             className={'drag-and-drop-item'}
         >
-            <div className={'kanban-card '} >
+            <div className={'task-card '} >
                 <div className={'wrapper ' + getPriorityStyling(task.priority)}>
                     <div className="header">{task.title}</div>
                     <div className="body">{task.description}

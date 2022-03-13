@@ -7,9 +7,13 @@ import { db } from '../db';
 import { useLiveQuery } from "dexie-react-hooks";
 import Modal from '../components/Modal';
 import TaskView from '../components/TaskView';
+import TaskNew from '../components/TaskNew';
+import Button from '../components/common ui/Button';
 
 export default function Dashboard() {
 
+
+    const [minimalCardView, setMinimalCardView] = useState(false);
 
     const [modal, setModal] = useState();
 
@@ -36,22 +40,38 @@ export default function Dashboard() {
                         closeCallback={(e) => setModal(null)}
                     >
                         <TaskView task={task} />
-
-
                     </Modal>
                 )
         );
 
     }
 
+    const newTask = () => {
+
+        //TODO don't let it be closed if there's any input in the fields
+        const test = () => {
+
+        }
+
+        setModal(
+            <Modal
+                outsideClickCloses={true}
+                title={'Create new task'}
+                closeCallback={(e) => test()}
+            >
+                <TaskNew />
+            </Modal>
+        )
+    }
+
     return <>
         <div id="main-wrapper">
 
-            <div id="row">
+            <div id="flex-wrapper">
 
                 <Sidemenu />
 
-                <div className="content-wrapper">
+                <div id="main-content">
 
                     {modal}
 
@@ -59,8 +79,12 @@ export default function Dashboard() {
                         possibleArguments={['title', 'description', 'category', 'priority']}
                         PreviewComponent={(props) => <CardPreview {...props} />}
                     />
+                    <Button className='button bgBlack textWhite' onClick={(e) => setMinimalCardView(!minimalCardView)}>
+                        {minimalCardView ? <>Minimal cards view</> : <>Full card view</>}
+                    </Button>
 
-                    <div id='kanban-board'>
+                    <div className={'board-view ' + (minimalCardView ? 'minimal' : '')}>
+
                         {categories?.map(category => {
                             return (
                                 <Column
@@ -71,6 +95,7 @@ export default function Dashboard() {
 
                     </div>
 
+                    <Button className='button bgGreen textWhite' onClick={(e) => newTask(e)}>New task</Button>
                     <table className='tasks' style={{ marginTop: 10 }} >
 
                         <thead>

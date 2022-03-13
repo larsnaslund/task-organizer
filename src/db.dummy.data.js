@@ -1,13 +1,21 @@
 export const insertDummyData = (dexieDb) => {
 
-    const dummyCategories = ['Todo', 'In Progress', 'Done'];
+    const dummyCategories = ['Todo', 'In Progress', 'Done', 'Review', 'Testing'];
 
     // TODO: use hook functions to create entries
     const dummyTasks = [
         {
+            title: 'Test reponsiveness',
+            description: 'Test that things work on different screen sizes',
+            priority: 1,
+            categoryId: 5,
+            label: 'testing',
+            status: 0
+        },
+        {
             title: 'Create a category',
             description: 'Create a category that the task can be assigned to.',
-            priority: 'high',
+            priority: 2,
             categoryId: 1,
             label: 'label test',
             status: 1
@@ -15,7 +23,7 @@ export const insertDummyData = (dexieDb) => {
         {
             title: 'Fix the task hook',
             description: 'Task hook is a mess being rewritten...',
-            priority: 'high',
+            priority: 3,
             categoryId: 2,
             label: 'label test',
             status: 0
@@ -23,7 +31,7 @@ export const insertDummyData = (dexieDb) => {
         {
             title: 'Filler task 1',
             description: 'Filler Lorem Ipsum',
-            priority: 'high',
+            priority: 4,
             categoryId: 4,
             label: 'label test',
             status: 0
@@ -31,7 +39,7 @@ export const insertDummyData = (dexieDb) => {
         {
             title: 'Filler task 2',
             description: 'Filler Lorem Ipsum',
-            priority: 'high',
+            priority: 4,
             categoryId: 4,
             label: 'label test',
             status: 0
@@ -39,7 +47,7 @@ export const insertDummyData = (dexieDb) => {
         {
             title: 'Filler task 3',
             description: 'Filler Lorem Ipsum',
-            priority: 'high',
+            priority: 3,
             categoryId: 4,
             label: 'label test',
             status: 0
@@ -47,7 +55,7 @@ export const insertDummyData = (dexieDb) => {
         {
             title: 'Filler task 4',
             description: 'Filler Lorem Ipsum',
-            priority: 'high',
+            priority: 2,
             categoryId: 4,
             label: 'label test',
             status: 0
@@ -55,7 +63,7 @@ export const insertDummyData = (dexieDb) => {
         {
             title: 'Filler task 5',
             description: 'Filler Lorem Ipsum',
-            priority: 'high',
+            priority: 1,
             categoryId: 4,
             label: 'label test',
             status: 0
@@ -63,8 +71,17 @@ export const insertDummyData = (dexieDb) => {
         {
             title: 'Filler task 6',
             description: 'Filler Lorem Ipsum',
-            priority: 'high',
+            priority: 5,
             categoryId: 1,
+            label: 'label test',
+            status: 0
+        },
+        ,
+        {
+            title: 'Random done',
+            description: 'Get something random done',
+            priority: 1,
+            categoryId: 3,
             label: 'label test',
             status: 0
         }

@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function Logo() {
     return (
-        <div style={{ padding: "0 18px" }}>
+        <div id='logo'>
             <svg width="132" height="41" viewBox="0 0 132 41" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M6 6H9V21H6V6ZM12 6H15V13.5H12V6ZM18 6H21V18H18V6Z" fill="white" />
                 <path d="M24 0H3C1.35 0 0 1.35 0 3V24C0 25.65 1.35 27 3 27H24C25.65 27 27 25.65 27 24V3C27 1.35 25.65 0 24 0ZM24 24H3V3H24V24Z" fill="white" />

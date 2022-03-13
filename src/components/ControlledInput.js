@@ -96,7 +96,7 @@ export default function ControlledInput({ possibleArguments, PreviewComponent })
     return <>
 
         {/* TODO own component */}
-        <div className={'smart-input ' + (inputActive ? 'focus' : '')}>
+        <div className={'smart-input fullWidthMobile ' + (inputActive ? 'focus' : '')}>
             <div className='input'>
                 <Input
                     value={inputValue}
