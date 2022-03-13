@@ -1,1 +1,68 @@
-/* TODO */
+#flex-wrapper {
+  display: flex;
+  align-items: stretch;
+  min-height: inherit;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* WIDTH 0-600 */
+@media screen and (max-width: 600px) {
+  #flex-wrapper {
+    flex-direction: column;
+  }
+
+  #sidemenu #logo {
+    display: none;
+  }
+  .board-view {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+/* WIDTH 0-800 */
+@media screen and (max-width: 800px) {
+  .fullWidthMobile {
+    width: 100%;
+  }
+  #main-content {
+    padding: 8px;
+    overflow: hidden;
+  }
+}
+
+/* WIDTH 600-800 */
+@media screen and (min-width: 600px) and (max-width: 800px) {
+  .board-view {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* WIDTH 600 >  */
+@media screen and (min-width: 600px) {
+}
+
+/* WIDTH 800 > */
+@media screen and (min-width: 800px) {
+  #flex-wrapper {
+    flex-direction: row;
+  }
+  .board-view {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* WIDTH 1200 > */
+@media screen and (min-width: 1200px) {
+  .board-view {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* WIDTH 1400 > */
+@media screen and (min-width: 1400px) {
+  .board-view {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+/* TODO allow more columns horizontally? */
